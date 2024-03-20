@@ -22,11 +22,11 @@ const db = require('./Db/connection')
 
 const router = require('./Routes/router')
 
-//middleware use (craete middleware to parse json data)
-examServer.use(express.json()) // to parse middleware
+
+examServer.use(express.json()) 
 examServer.use(cors())
 examServer.use(router)
- // (3 things to use)
+ 
 
  // to connect to frontend
 

@@ -1,26 +1,3 @@
-// // import mongoose
-
-// const mongoose = require('mongoose')
-
-// // create schema
-// const userSchema =new mongoose.Schema({
-//     userId:{
-//         type:String,
-//         required:true
-//     },
-//     userName:{
-//         type:String,
-//         required:true
-//     },
-//     password:{
-//         type:String,
-//         required:true
-//     }
-// })
-// const users = mongoose.model("users",userSchema)
-// module.exports = users
-
-
 
 // import mongoose
 const mongoose = require('mongoose');
@@ -45,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['male', 'female'], // Enum for radio button options
+        enum: ['male', 'female'], //  for radio button options
         required: true
     }
 });

@@ -15,7 +15,7 @@ const {
     userName,
     password,address,gender
 } = req.body
-const existingUser = await users.findOne({ // name of the model
+const existingUser = await users.findOne({ 
     userName
 })
 if(existingUser){
@@ -35,6 +35,9 @@ else{
 res.status(403).json("Register Error" )
     }
 }
+
+
+// login
 
 exports.login = async(req,res)=>{
     console.log("Inside Login Function");
