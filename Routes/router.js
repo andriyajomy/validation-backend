@@ -24,5 +24,9 @@ router.post('/register',userController.register)
 
 router.post('/login',userController.login)
 
+//add
+
+router.post('/add',userController.addFormDetails)
+
 
 module.exports = router

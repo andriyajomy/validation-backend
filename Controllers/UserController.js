@@ -11,19 +11,19 @@ exports.register = async (req,res)=>{
 
     try{
 const {
-    Name,
-    userName,
+    name,
+    username,
     password,address,gender
 } = req.body
 const existingUser = await users.findOne({ 
-    userName
+    username
 })
 if(existingUser){
     res.status(401).json("User Already Exists")
 }
 else{
     const newUser = new users({
-        Name,userName,password,address,gender
+        name,username,password,address,gender
     })
     console.log(newUser);
     await newUser.save()
@@ -45,10 +45,10 @@ exports.login = async(req,res)=>{
 
 try{
     const {
-        userName,password
+        username,password
     }=req.body
     const user = await users.findOne({
-        userName,password
+        username,password
     })
     if(user){
         const token = jwt.sign({userId:user._id},'superKey2024')
@@ -61,4 +61,35 @@ try{
 catch(err){
 res.status(403).json("Server Error")
 }
+}
+
+// add details
+
+exports.addFormDetails = async(req,res)=>{
+    console.log("Inside add form");
+    
+    const userId = req.payload
+
+    const {name,username,password,address,gender,phone,dob,place,agreeTerms} = req.body
+
+    console.log(userId,name,username,password,address,gender,phone,dob,place,agreeTerms);
+    try{
+const existingUser = await users.findOne({username})
+if(existingUser){
+    res.status(402).json("User Already Added")
+
+}
+else{
+    const newUser = new users({
+        userId,name,username,password,address,gender,phone,dob,place,agreeTerms
+    })
+
+    await newUser.save()
+    res.status(200).json(newUser)
+}
+    }
+    catch(err){
+        res.status(407).json({message:err.message})
+
+    }
 }

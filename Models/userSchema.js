@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 
 // create schema
 const userSchema = new mongoose.Schema({
-    Name: {
+    name: {
         type: String,
         required: true
     },
-    userName: {
+    username: {
         type: String,
         required: true
     },
@@ -22,9 +22,24 @@ const userSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['male', 'female'], //  for radio button options
+        enum: ['male', 'female'], 
         required: true
+    },
+    phone:{
+        type:String
+    },
+    dob:{
+type:Date
+    },
+    place:{
+        type:String,
+        enum:['Place1','Place2','Place3']
+    },
+    agreeTerms:{
+        type:Boolean
     }
+    
+
 });
 
 const users = mongoose.model("users", userSchema);
